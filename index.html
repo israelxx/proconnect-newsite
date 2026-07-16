@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProConnect Agency — Mais Clientes. Mais Vendas. Todo Mês. Previsível.</title>
+<meta name="description" content="Agência de tráfego pago especializada em resultados. Geramos clientes reais para o seu negócio com estratégias de Meta Ads e Google Ads." />
+<link rel="icon" type="image/jpeg" href="brand_assets/619588802_17992297424916381_1502636562684760826_n.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: {
+            950: '#020409',
+            900: '#04060c',
+            850: '#060911',
+            800: '#080c16',
+            700: '#0b101d',
+            600: '#111827',
+            500: '#1b2233',
+          },
+          brand: {
+            DEFAULT: '#2ac3ff',
+            soft: '#7fe0ff',
+            dim: '#1694c9',
+          },
+          electric: {
+            DEFAULT: '#4a5df5',
+            deep: '#1230a8',
+          },
+          success: '#2ee6a6',
+          danger: '#ff5c72',
+        },
+        fontFamily: {
+          display: ['"Unbounded"', 'sans-serif'],
+          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+        boxShadow: {
+          glow: '0 0 0 1px rgba(42,195,255,0.15), 0 8px 32px -8px rgba(42,195,255,0.35), 0 24px 64px -24px rgba(0,0,0,0.7)',
+          card: '0 1px 0 rgba(255,255,255,0.03) inset, 0 24px 48px -32px rgba(0,0,0,0.8)',
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  :root {
+    --bg: #04060c;
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { scrollbar-color: #1b2233 #04060c; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  ::selection { background: #2ac3ff; color: #04060c; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #04060c; }
+  ::-webkit-scrollbar-thumb { background: #16202f; border-radius: 8px; border: 2px solid #04060c; }
+  ::-webkit-scrollbar-thumb:hover { background: #1e2c40; }
+
+  .font-display { font-family: 'Unbounded', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ---------- Background atmosphere ---------- */
+  .bg-atmosphere {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: #04060c;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    will-change: transform;
+  }
+  .orb-1 {
+    width: 640px; height: 640px;
+    top: -220px; left: -160px;
+    background: radial-gradient(circle at 30% 30%, #2ac3ff, transparent 70%);
+    animation: float-a 22s var(--ease-spring) infinite;
+  }
+  .orb-2 {
+    width: 560px; height: 560px;
+    top: 30%; right: -220px;
+    background: radial-gradient(circle at 60% 40%, #4a5df5, transparent 70%);
+    animation: float-b 26s var(--ease-spring) infinite;
+  }
+  .orb-3 {
+    width: 480px; height: 480px;
+    bottom: -200px; left: 20%;
+    background: radial-gradient(circle at 50% 50%, #1694c9, transparent 70%);
+    opacity: 0.25;
+    animation: float-c 30s var(--ease-spring) infinite;
+  }
+  @keyframes float-a {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(60px, 80px); }
+  }
+  @keyframes float-b {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-70px, 60px); }
+  }
+  @keyframes float-c {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(40px, -50px); }
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(148,163,184,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,163,184,0.07) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+  }
+
+  .bg-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- Reveal animations ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--ease-spring), transform 0.9s var(--ease-spring);
+  }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .orb { animation: none !important; }
+  }
+
+  /* ---------- Eyebrow pill ---------- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(42,195,255,0.25);
+    background: rgba(42,195,255,0.06);
+    color: #7fe0ff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eyebrow--danger {
+    border-color: rgba(255,92,114,0.3);
+    background: rgba(255,92,114,0.06);
+    color: #ff8a9a;
+  }
+
+  /* ---------- Gradient text ---------- */
+  .text-gradient {
+    background: linear-gradient(100deg, #eaf5ff 0%, #7fe0ff 35%, #2ac3ff 60%, #4a5df5 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- Surfaces ---------- */
+  .surface {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(148,163,184,0.1);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 24px 48px -32px rgba(0,0,0,0.85);
+  }
+  .surface-hover {
+    transition: transform 0.5s var(--ease-spring), border-color 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-spring);
+  }
+  .surface-hover:hover {
+    transform: translateY(-6px);
+    border-color: rgba(42,195,255,0.35);
+    box-shadow: 0 0 0 1px rgba(42,195,255,0.12), 0 32px 64px -32px rgba(42,195,255,0.25), 0 24px 48px -32px rgba(0,0,0,0.85);
+  }
+
+  .corner-glow {
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(42,195,255,0.18), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 1rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #04060c;
+    background: linear-gradient(100deg, #7fe0ff, #2ac3ff 55%, #4a5df5);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.4) inset, 0 12px 32px -8px rgba(42,195,255,0.5);
+    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring), filter 0.4s var(--ease-spring);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 20px 40px -8px rgba(42,195,255,0.65); filter: brightness(1.05); }
+  .btn-primary:active { transform: translateY(-1px) scale(0.98); }
+  .btn-primary:focus-visible { outline: 2px solid #7fe0ff; outline-offset: 3px; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #e7ecf6;
+    border: 1px solid rgba(148,163,184,0.2);
+    background: rgba(255,255,255,0.02);
+    transition: transform 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring), background 0.4s var(--ease-spring);
+  }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: rgba(42,195,255,0.4); background: rgba(42,195,255,0.06); }
+  .btn-ghost:active { transform: translateY(0) scale(0.98); }
+  .btn-ghost:focus-visible { outline: 2px solid #7fe0ff; outline-offset: 3px; }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #7fe0ff;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Nav link underline ---------- */
+  .nav-link { position: relative; color: #b6c0d6; font-weight: 500; font-size: 0.9rem; transition: color 0.3s var(--ease-spring); }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 100%;
+    background: linear-gradient(90deg, #2ac3ff, #4a5df5);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease-spring);
+  }
+  .nav-link:hover { color: #fff; }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  /* ---------- Case study HUD cards ---------- */
+  .hud-card { position: relative; overflow: hidden; }
+  .hud-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(42,195,255,0.08) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: sweep 6s ease-in-out infinite;
+  }
+  @keyframes sweep {
+    0%, 60%, 100% { transform: translateX(-120%); }
+    80% { transform: translateX(120%); }
+  }
+
+  /* ---------- Tabs ---------- */
+  .tab-btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #97a3ba;
+    border: 1px solid rgba(148,163,184,0.14);
+    background: rgba(255,255,255,0.015);
+    white-space: nowrap;
+    transition: color 0.35s var(--ease-spring), background 0.35s var(--ease-spring), border-color 0.35s var(--ease-spring), transform 0.35s var(--ease-spring);
+  }
+  .tab-btn:hover { color: #e7ecf6; transform: translateY(-2px); }
+  .tab-btn.is-active {
+    color: #04060c;
+    background: linear-gradient(100deg, #7fe0ff, #2ac3ff);
+    border-color: transparent;
+  }
+
+  .case-card { transition: opacity 0.5s var(--ease-spring), transform 0.5s var(--ease-spring); }
+  .case-card.is-hidden { opacity: 0; transform: scale(0.95); position: absolute; pointer-events: none; }
+
+  /* ---------- Accordion ---------- */
+  .accordion-item { border: 1px solid rgba(148,163,184,0.12); border-radius: 1.25rem; background: rgba(255,255,255,0.02); overflow: hidden; }
+  .accordion-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; text-align: left; }
+  .accordion-icon { transition: transform 0.5s var(--ease-spring); flex-shrink: 0; color: #7fe0ff; }
+  .accordion-item.is-open .accordion-icon { transform: rotate(45deg); }
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s var(--ease-spring);
+  }
+  .accordion-item.is-open .accordion-panel { grid-template-rows: 1fr; }
+  .accordion-panel-inner { overflow: hidden; }
+  .accordion-panel-inner p { padding: 0 1.5rem 1.5rem; color: #97a3ba; line-height: 1.7; }
+
+  /* ---------- Star rating ---------- */
+  .stars { color: #ffb42e; letter-spacing: 0.1em; }
+
+  /* ---------- Form ---------- */
+  .field-label {
+    display: block; font-size: 0.8rem; font-weight: 600; color: #97a3ba; margin-bottom: 0.5rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .field-input {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0.85rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(148,163,184,0.16);
+    color: #f4f6fb;
+    font-size: 0.95rem;
+    transition: border-color 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring), background 0.35s var(--ease-spring);
+  }
+  .field-input::placeholder { color: #566076; }
+  .field-input:hover { border-color: rgba(148,163,184,0.3); }
+  .field-input:focus {
+    outline: none;
+    border-color: rgba(42,195,255,0.6);
+    background: rgba(42,195,255,0.04);
+    box-shadow: 0 0 0 4px rgba(42,195,255,0.12);
+  }
+  select.field-input { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237fe0ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.75rem; }
+  select.field-input option { background: #0a0e18; color: #f4f6fb; }
+
+  .checkline { display: flex; align-items: flex-start; gap: 0.6rem; color: #97a3ba; font-size: 0.85rem; }
+  .checkline svg { flex-shrink: 0; margin-top: 2px; color: #2ee6a6; }
+
+  /* ---------- Mobile nav ---------- */
+  #mobile-panel { max-height: 0; overflow: hidden; transition: max-height 0.5s var(--ease-spring); }
+  #mobile-panel.is-open { max-height: 480px; }
+
+  #site-header { background: transparent; border-bottom: 1px solid transparent; transition: background 0.4s var(--ease-spring), backdrop-filter 0.4s var(--ease-spring), border-color 0.4s var(--ease-spring); }
+  #site-header.header-scrolled { background: rgba(4,6,12,0.75); backdrop-filter: blur(16px); border-color: rgba(148,163,184,0.08); }
+  #site-header.menu-open { background: rgba(4,6,12,0.97); backdrop-filter: blur(20px); border-color: rgba(148,163,184,0.08); }
+
+  .hamburger span { display: block; height: 2px; background: #f4f6fb; border-radius: 2px; transition: transform 0.4s var(--ease-spring), opacity 0.3s var(--ease-spring); }
+  #nav-toggle.is-open .hb-top { transform: translateY(7px) rotate(45deg); }
+  #nav-toggle.is-open .hb-mid { opacity: 0; }
+  #nav-toggle.is-open .hb-bottom { transform: translateY(-7px) rotate(-45deg); }
+</style>
+</head>
+
+<body class="text-white antialiased">
+
+<div class="bg-atmosphere">
+  <canvas id="site-shader" class="absolute inset-0 h-full w-full opacity-60" aria-hidden="true"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-noise"></div>
+</div>
+
+<!-- ================= NAV ================= -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-500">
+  <nav class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="#inicio" class="flex items-center gap-2.5">
+        <img src="brand_assets/Ativo%2028@2x-Photoroom.png" alt="ProConnect" class="h-8 w-8 object-contain" />
+        <span class="font-display font-semibold text-lg tracking-tight">ProConnect</span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-9">
+        <a href="#inicio" class="nav-link">Início</a>
+        <a href="#resultados" class="nav-link">Resultados</a>
+        <a href="#como-funciona" class="nav-link">Como Funciona</a>
+        <a href="#depoimentos" class="nav-link">Depoimentos</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </div>
+
+      <div class="hidden lg:block">
+        <a href="#contato" class="btn-primary">Quero minha reunião gratuita
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button id="nav-toggle" class="hamburger lg:hidden w-9 h-8 flex flex-col justify-between py-1" aria-label="Abrir menu">
+        <span class="hb-top w-full"></span>
+        <span class="hb-mid w-full"></span>
+        <span class="hb-bottom w-full"></span>
+      </button>
+    </div>
+
+    <div id="mobile-panel" class="lg:hidden">
+      <div class="flex flex-col gap-1 pb-6 pt-2">
+        <a href="#inicio" class="nav-link py-2.5">Início</a>
+        <a href="#resultados" class="nav-link py-2.5">Resultados</a>
+        <a href="#como-funciona" class="nav-link py-2.5">Como Funciona</a>
+        <a href="#depoimentos" class="nav-link py-2.5">Depoimentos</a>
+        <a href="#sobre" class="nav-link py-2.5">Sobre</a>
+        <a href="#contato" class="nav-link py-2.5">Contato</a>
+        <a href="#contato" class="btn-primary justify-center mt-3">Quero minha reunião gratuita</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="relative z-10">
+
+  <!-- ================= HERO ================= -->
+  <section id="inicio" class="relative overflow-hidden pt-44 pb-24 md:pt-56 md:pb-32">
+    <div class="relative z-10 max-w-5xl mx-auto px-6 md:px-8 text-center">
+      <div class="reveal eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+        Agência de tráfego pago especializada em resultados
+      </div>
+
+      <h1 class="reveal font-display font-semibold text-[2.6rem] leading-[1.08] tracking-tight mt-8 sm:text-6xl md:text-7xl" style="transition-delay:.08s">
+        Mais clientes.<br class="hidden sm:block" /> Mais vendas.
+        <br />
+        <span class="text-gradient">Todo mês. Previsível.</span>
+      </h1>
+
+      <p class="reveal mt-8 text-lg leading-relaxed text-slate-400 max-w-2xl mx-auto md:text-xl" style="transition-delay:.16s">
+        Geramos clientes reais para o seu negócio com estratégias de tráfego pago no <strong class="text-slate-200 font-semibold">Meta Ads</strong> — sem achismo, sem verba desperdiçada, só resultado real no seu caixa.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.24s">
+        <a href="#contato" class="btn-primary">Quero atrair mais clientes
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="reveal mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-slate-400" style="transition-delay:.3s">
+        <span class="inline-flex items-center gap-2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2ac3ff" stroke-width="2.5"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V5z"/></svg>Reunião estratégica gratuita</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="inline-flex items-center gap-2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2ac3ff" stroke-width="2.5"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Sem compromisso algum</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="inline-flex items-center gap-2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2ac3ff" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Resposta em até 5min</span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="reveal relative z-10 mt-24 max-w-5xl mx-auto px-6 md:px-8">
+      <div class="surface rounded-3xl grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.06]">
+        <div class="p-8 text-center">
+          <div class="font-display font-semibold text-3xl md:text-4xl text-gradient"><span class="counter" data-prefix="+R$ " data-target="2000000" data-format="money">0</span></div>
+          <p class="mt-2 text-xs tracking-wide uppercase text-slate-400">Em receita gerada para clientes</p>
+        </div>
+        <div class="p-8 text-center">
+          <div class="font-display font-semibold text-3xl md:text-4xl text-gradient"><span class="counter" data-prefix="+" data-suffix=" empresas" data-target="50">0</span></div>
+          <p class="mt-2 text-xs tracking-wide uppercase text-slate-400">Atendidas com sucesso</p>
+        </div>
+        <div class="p-8 text-center">
+          <div class="font-display font-semibold text-3xl md:text-4xl text-gradient"><span class="counter" data-prefix="+" data-suffix=" anos" data-target="3">0</span></div>
+          <p class="mt-2 text-xs tracking-wide uppercase text-slate-400">De experiência em tráfego pago</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROBLEMA ================= -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-start">
+        <div>
+          <div class="reveal eyebrow eyebrow--danger">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            O grande obstáculo dos negócios
+          </div>
+          <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+            Você já tentou anunciar e sentiu que estava jogando <span class="text-danger">dinheiro fora?</span>
+          </h2>
+          <p class="reveal mt-6 text-slate-400 leading-relaxed text-lg" style="transition-delay:.1s">
+            Isso acontece porque a maioria dos negócios anuncia <strong class="text-slate-200">sem estratégia clara</strong>, sem segmentação correta de compradores e sem nenhum acompanhamento profissional analítico.
+          </p>
+          <p class="reveal mt-4 text-slate-400 leading-relaxed text-lg" style="transition-delay:.14s">O resultado dessa falta de foco?</p>
+
+          <div class="reveal mt-6 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm font-medium text-amber-300/90" style="transition-delay:.18s">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg>
+            Verba desperdiçada · Leads frios · Nenhuma venda real no final do dia.
+          </div>
+
+          <div class="reveal mt-8 surface rounded-2xl p-6 border-danger/20" style="transition-delay:.22s; border-color: rgba(255,92,114,0.2); background: rgba(255,92,114,0.04);">
+            <p class="font-semibold text-danger">A verdade amarga do tráfego pago amador:</p>
+            <p class="mt-2 text-slate-400 leading-relaxed">Entregar dinheiro para o Meta Ads sem estruturar criativos assertivos e mensurar dados é o caminho mais curto para estagnar seu negócio.</p>
+          </div>
+
+          <p class="reveal mt-8 text-slate-300 leading-relaxed" style="transition-delay:.26s">
+            Existe uma forma profissional melhor, e nós <strong class="text-brand underline decoration-brand/40 underline-offset-4">comprovamos isso todos os dias.</strong>
+          </p>
+        </div>
+
+        <div class="reveal surface rounded-3xl p-8 md:p-10 relative overflow-hidden" style="transition-delay:.15s">
+          <div class="corner-glow"></div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-danger/10 border border-danger/25 flex items-center justify-center text-danger">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </div>
+            <h3 class="font-display font-semibold text-lg">Sintomas da falta de profissionalismo</h3>
+          </div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 text-slate-300"><span class="mt-1 w-5 h-5 rounded-full bg-danger/10 border border-danger/30 text-danger flex items-center justify-center flex-shrink-0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Campanhas rodando sem retorno claro</li>
+            <li class="flex items-start gap-3 text-slate-300"><span class="mt-1 w-5 h-5 rounded-full bg-danger/10 border border-danger/30 text-danger flex items-center justify-center flex-shrink-0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Não saber quanto custa cada cliente novo</li>
+            <li class="flex items-start gap-3 text-slate-300"><span class="mt-1 w-5 h-5 rounded-full bg-danger/10 border border-danger/30 text-danger flex items-center justify-center flex-shrink-0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Dependência total do boca a boca</li>
+            <li class="flex items-start gap-3 text-slate-300"><span class="mt-1 w-5 h-5 rounded-full bg-danger/10 border border-danger/30 text-danger flex items-center justify-center flex-shrink-0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Tentativas frustradas de anunciar sozinho</li>
+            <li class="flex items-start gap-3 text-slate-300"><span class="mt-1 w-5 h-5 rounded-full bg-danger/10 border border-danger/30 text-danger flex items-center justify-center flex-shrink-0"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Agência que some após fechar o contrato</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOLUÇÃO ================= -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-5xl mx-auto px-6 md:px-8 text-center">
+      <div class="reveal eyebrow">Como resolvemos o seu problema</div>
+      <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+        A ProConnect transforma investimento em publicidade em <span class="text-gradient">clientes reais</span>
+      </h2>
+      <p class="reveal mt-6 text-lg text-slate-400 leading-relaxed max-w-3xl mx-auto" style="transition-delay:.1s">
+        Somos especialistas em <strong class="text-slate-200">Meta Ads (Facebook &amp; Instagram)</strong> e <strong class="text-slate-200">Google Ads</strong>. Nossa metodologia exclusiva foi testada e aprovada para gerar resultados consistentes e mensuráveis para negócios de diversos segmentos.
+      </p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-8 mt-16 grid md:grid-cols-3 gap-6">
+      <div class="reveal surface surface-hover rounded-3xl p-8 relative overflow-hidden" style="transition-delay:.05s">
+        <div class="corner-glow"></div>
+        <div class="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl">Estratégia Personalizada</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed">Cada negócio é único. Criamos campanhas do zero baseadas no seu público-alvo, mercado local e meta de faturamento.</p>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-8 relative overflow-hidden" style="transition-delay:.12s">
+        <div class="corner-glow"></div>
+        <div class="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl">Gestão Profissional</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed">Monitoramos e otimizamos suas campanhas diariamente para garantir o melhor retorno sobre cada real investido no Meta Ads.</p>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-8 relative overflow-hidden" style="transition-delay:.19s">
+        <div class="corner-glow"></div>
+        <div class="w-12 h-12 rounded-2xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 3v6h-6"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-xl">Relatórios Transparentes</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed">Você acompanha tudo em tempo real. Nada de relatórios confusos — dados claros e métricas diretas de vendas e leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMO FUNCIONA ================= -->
+  <section id="como-funciona" class="py-24 md:py-32">
+    <div class="max-w-5xl mx-auto px-6 md:px-8 text-center">
+      <div class="reveal eyebrow">Passo a passo transparente</div>
+      <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+        Da primeira conversa ao primeiro resultado: veja como trabalhamos
+      </h2>
+      <p class="reveal mt-6 text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto" style="transition-delay:.1s">
+        Sem processos complicados ou enrolação. Nossa jornada de aceleração em tráfego pago segue quatro etapas lógicas focadas no crescimento do seu caixa.
+      </p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-8 mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal surface surface-hover rounded-3xl p-7 relative" style="transition-delay:.05s">
+        <span class="absolute top-6 right-7 font-display font-bold text-4xl text-white/[0.06]">01</span>
+        <div class="w-11 h-11 rounded-xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2Z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">01. Reunião de Diagnóstico</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed text-sm">Entendemos o seu negócio, seu público e seus objetivos atuais. Reunião 100% gratuita, online e sem compromisso.</p>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-7 relative" style="transition-delay:.12s">
+        <span class="absolute top-6 right-7 font-display font-bold text-4xl text-white/[0.06]">02</span>
+        <div class="w-11 h-11 rounded-xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20l-5.5 2 2-5.5L16 6l3.5 3.5z"/><path d="M3 21l3-3"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">02. Planejamento Estratégico</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed text-sm">Montamos a estrutura ideal das campanhas: definição de públicos, segmentação, criativos, orçamento e metas realistas.</p>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-7 relative" style="transition-delay:.19s">
+        <span class="absolute top-6 right-7 font-display font-bold text-4xl text-white/[0.06]">03</span>
+        <div class="w-11 h-11 rounded-xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">03. Ativação e Gestão</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed text-sm">Subimos as campanhas no Meta Ads e acompanhamos tudo de perto, otimizando diariamente taxas de conversão e cliques para maximizar resultados.</p>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-7 relative" style="transition-delay:.26s">
+        <span class="absolute top-6 right-7 font-display font-bold text-4xl text-white/[0.06]">04</span>
+        <div class="w-11 h-11 rounded-xl bg-brand/10 border border-brand/25 flex items-center justify-center text-brand mb-6">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg">04. Relatórios e Escala</h3>
+        <p class="mt-3 text-slate-400 leading-relaxed text-sm">Com dados reais em mãos, escalamos o que converte melhor e eliminamos todo desperdício de verba. Seu crescimento passa a ser contínuo.</p>
+      </div>
+    </div>
+
+    <div class="reveal mt-14 text-center" style="transition-delay:.3s">
+      <a href="#contato" class="btn-primary">Quero começar agora
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <p class="mt-4 text-sm text-slate-500">Sem custo pelo diagnóstico inicial · Reunião estratégica 100% online</p>
+    </div>
+  </section>
+
+  <!-- ================= RESULTADOS ================= -->
+  <section id="resultados" class="py-24 md:py-32">
+    <div class="max-w-5xl mx-auto px-6 md:px-8 text-center">
+      <div class="reveal eyebrow">Nossos cases de sucesso</div>
+      <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+        Resultados reais de <span class="text-gradient">clientes reais</span>
+      </h2>
+      <p class="reveal mt-6 text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto" style="transition-delay:.1s">
+        Não falamos de promessas. Mostramos exatamente o que entregamos direto na conta de anúncios e no fluxo de vendas dos nossos parceiros comerciais.
+      </p>
+    </div>
+
+    <div class="reveal max-w-7xl mx-auto px-6 md:px-8 mt-12 flex gap-3 overflow-x-auto pb-2 justify-start lg:justify-center" style="transition-delay:.15s">
+      <button class="tab-btn is-active" data-filter="todos">Todos os Segmentos</button>
+      <button class="tab-btn" data-filter="estofados">Estofados</button>
+      <button class="tab-btn" data-filter="servicos-locais">Serviços locais</button>
+      <button class="tab-btn" data-filter="vendas-diretas">Vendas Diretas</button>
+      <button class="tab-btn" data-filter="alimentacao">Alimentação</button>
+      <button class="tab-btn" data-filter="estudo-publico">Estudo de Público</button>
+      <button class="tab-btn" data-filter="b2b">Serviços B2B</button>
+    </div>
+
+    <div id="case-grid" class="max-w-7xl mx-auto px-6 md:px-8 mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+
+      <!-- Case 1 -->
+      <article class="case-card reveal surface rounded-3xl overflow-hidden" data-segment="estofados">
+        <div class="hud-card font-mono text-xs bg-black/40 border-b border-white/5 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-danger/70"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span><span class="w-2.5 h-2.5 rounded-full bg-success/70"></span><span class="ml-2 text-slate-500">proconnect_metrics.csv</span></div>
+            <span class="text-success bg-success/10 border border-success/25 rounded-full px-2 py-0.5">↗ LIVE</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-400"><span>Custo por Resultado (Lead)</span><span class="text-success">-60% Mês Anterior</span></div>
+          <div class="h-1.5 rounded-full bg-white/5 mt-2 overflow-hidden"><div class="h-full w-2/5 rounded-full bg-gradient-to-r from-brand to-electric"></div></div>
+          <div class="flex items-center justify-between mt-3 text-slate-300"><span>Cliques: <strong class="text-white">1.482</strong></span><span>ROAS: <strong class="text-success">Excelente</strong></span></div>
+        </div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 mb-3">
+            <span>Estofados / Lavagem</span>
+            <span class="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Estofados</span>
+          </div>
+          <h3 class="font-display font-semibold text-xl leading-snug">3x mais contatos em 30 dias</h3>
+          <p class="mt-2 text-sm font-semibold text-success inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>+210 leads qualificados</p>
+          <p class="mt-3 text-slate-400 text-sm leading-relaxed">Investimento focado em conversão para WhatsApp, resultando em alta procura na equipe de agendamentos e aumento drástico de faturamento.</p>
+        </div>
+      </article>
+
+      <!-- Case 2 -->
+      <article class="case-card reveal surface rounded-3xl overflow-hidden" data-segment="servicos-locais" style="transition-delay:.08s">
+        <div class="hud-card font-mono text-xs bg-black/40 border-b border-white/5 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-danger/70"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span><span class="w-2.5 h-2.5 rounded-full bg-success/70"></span><span class="ml-2 text-slate-500">proconnect_metrics.csv</span></div>
+            <span class="text-success bg-success/10 border border-success/25 rounded-full px-2 py-0.5">↗ LIVE</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-400"><span>Custo por Resultado (Lead)</span><span class="text-success">-60% Mês Anterior</span></div>
+          <div class="h-1.5 rounded-full bg-white/5 mt-2 overflow-hidden"><div class="h-full w-1/2 rounded-full bg-gradient-to-r from-brand to-electric"></div></div>
+          <div class="flex items-center justify-between mt-3 text-slate-300"><span>Cliques: <strong class="text-white">1.482</strong></span><span>ROAS: <strong class="text-success">Excelente</strong></span></div>
+        </div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 mb-3">
+            <span>Barbearia Premium</span>
+            <span class="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Serviços locais</span>
+          </div>
+          <h3 class="font-display font-semibold text-xl leading-snug">+200 agendamentos no mês</h3>
+          <p class="mt-2 text-sm font-semibold text-success inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>CPL de R$4,20 por vaga</p>
+          <p class="mt-3 text-slate-400 text-sm leading-relaxed">Implementação de fluxo estratégico de conversão voltado para agendamentos por geolocalização.</p>
+        </div>
+      </article>
+
+      <!-- Case 3 -->
+      <article class="case-card reveal surface rounded-3xl overflow-hidden" data-segment="vendas-diretas" style="transition-delay:.16s">
+        <div class="hud-card font-mono text-xs bg-black/40 border-b border-white/5 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-danger/70"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span><span class="w-2.5 h-2.5 rounded-full bg-success/70"></span><span class="ml-2 text-slate-500">proconnect_metrics.csv</span></div>
+            <span class="text-success bg-success/10 border border-success/25 rounded-full px-2 py-0.5">↗ LIVE</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-400"><span>Custo por Resultado (Lead)</span><span class="text-success">-60% Mês Anterior</span></div>
+          <div class="h-1.5 rounded-full bg-white/5 mt-2 overflow-hidden"><div class="h-full w-3/5 rounded-full bg-gradient-to-r from-brand to-electric"></div></div>
+          <div class="flex items-center justify-between mt-3 text-slate-300"><span>Cliques: <strong class="text-white">1.482</strong></span><span>ROAS: <strong class="text-success">Excelente</strong></span></div>
+        </div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 mb-3">
+            <span>Comércio Multimarcas</span>
+            <span class="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Vendas Diretas</span>
+          </div>
+          <h3 class="font-display font-semibold text-xl leading-snug">ROAS 8,4 em campanha de conversão</h3>
+          <p class="mt-2 text-sm font-semibold text-success inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>8,4x retorno s/ investimento</p>
+          <p class="mt-3 text-slate-400 text-sm leading-relaxed">Vendas diretas otimizadas através de funil estruturado para conversão de novos compradores e remarketing.</p>
+        </div>
+      </article>
+
+      <!-- Case 4 -->
+      <article class="case-card reveal surface rounded-3xl overflow-hidden" data-segment="alimentacao" style="transition-delay:.05s">
+        <div class="hud-card font-mono text-xs bg-black/40 border-b border-white/5 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-danger/70"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span><span class="w-2.5 h-2.5 rounded-full bg-success/70"></span><span class="ml-2 text-slate-500">proconnect_metrics.csv</span></div>
+            <span class="text-success bg-success/10 border border-success/25 rounded-full px-2 py-0.5">↗ LIVE</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-400"><span>Custo por Resultado (Lead)</span><span class="text-success">-60% Mês Anterior</span></div>
+          <div class="h-1.5 rounded-full bg-white/5 mt-2 overflow-hidden"><div class="h-full w-1/3 rounded-full bg-gradient-to-r from-brand to-electric"></div></div>
+          <div class="flex items-center justify-between mt-3 text-slate-300"><span>Cliques: <strong class="text-white">1.482</strong></span><span>ROAS: <strong class="text-success">Excelente</strong></span></div>
+        </div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 mb-3">
+            <span>Delivery</span>
+            <span class="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Alimentação</span>
+          </div>
+          <h3 class="font-display font-semibold text-xl leading-snug">R$80k em vendas</h3>
+          <p class="mt-2 text-sm font-semibold text-success inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>ROI de dar água na boca</p>
+          <p class="mt-3 text-slate-400 text-sm leading-relaxed">Captação de pedidos diretos com cardápios digitais otimizados para conversão.</p>
+        </div>
+      </article>
+
+      <!-- Case 5 -->
+      <article class="case-card reveal surface rounded-3xl overflow-hidden" data-segment="estudo-publico" style="transition-delay:.12s">
+        <div class="hud-card font-mono text-xs bg-black/40 border-b border-white/5 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-danger/70"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span><span class="w-2.5 h-2.5 rounded-full bg-success/70"></span><span class="ml-2 text-slate-500">proconnect_metrics.csv</span></div>
+            <span class="text-success bg-success/10 border border-success/25 rounded-full px-2 py-0.5">↗ LIVE</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-400"><span>Custo por Resultado (Lead)</span><span class="text-success">-60% Mês Anterior</span></div>
+          <div class="h-1.5 rounded-full bg-white/5 mt-2 overflow-hidden"><div class="h-full w-4/5 rounded-full bg-gradient-to-r from-brand to-electric"></div></div>
+          <div class="flex items-center justify-between mt-3 text-slate-300"><span>Cliques: <strong class="text-white">1.482</strong></span><span>ROAS: <strong class="text-success">Excelente</strong></span></div>
+        </div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 mb-3">
+            <span>Varejo físico e online</span>
+            <span class="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Estudo de Público</span>
+          </div>
+          <h3 class="font-display font-semibold text-xl leading-snug">CPL reduzido de R$12 para R$2,80</h3>
+          <p class="mt-2 text-sm font-semibold text-success inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>76% de economia por lead</p>
+          <p class="mt-3 text-slate-400 text-sm leading-relaxed">Substituição completa do público genérico por listas personalizadas de alto valor e públicos semelhantes.</p>
+        </div>
+      </article>
+
+      <!-- Case 6 -->
+      <article class="case-card reveal surface rounded-3xl overflow-hidden" data-segment="b2b" style="transition-delay:.19s">
+        <div class="hud-card font-mono text-xs bg-black/40 border-b border-white/5 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-danger/70"></span><span class="w-2.5 h-2.5 rounded-full bg-amber-400/70"></span><span class="w-2.5 h-2.5 rounded-full bg-success/70"></span><span class="ml-2 text-slate-500">proconnect_metrics.csv</span></div>
+            <span class="text-success bg-success/10 border border-success/25 rounded-full px-2 py-0.5">↗ LIVE</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-400"><span>Custo por Resultado (Lead)</span><span class="text-success">-60% Mês Anterior</span></div>
+          <div class="h-1.5 rounded-full bg-white/5 mt-2 overflow-hidden"><div class="h-full w-2/3 rounded-full bg-gradient-to-r from-brand to-electric"></div></div>
+          <div class="flex items-center justify-between mt-3 text-slate-300"><span>Cliques: <strong class="text-white">1.482</strong></span><span>ROAS: <strong class="text-success">Excelente</strong></span></div>
+        </div>
+        <div class="p-7">
+          <div class="flex items-center justify-between text-xs uppercase tracking-wide text-slate-500 mb-3">
+            <span>Serviços Corporativos</span>
+            <span class="px-2.5 py-1 rounded-full border border-white/10 bg-white/5">Serviços B2B</span>
+          </div>
+          <h3 class="font-display font-semibold text-xl leading-snug">Dobrou o faturamento em 2 meses</h3>
+          <p class="mt-2 text-sm font-semibold text-success inline-flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>100% de crescimento real</p>
+          <p class="mt-3 text-slate-400 text-sm leading-relaxed">Segmentação sofisticada de proprietários de negócios locais, diretores e tomadores de decisão.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= DEPOIMENTOS ================= -->
+  <section id="depoimentos" class="py-24 md:py-32">
+    <div class="max-w-5xl mx-auto px-6 md:px-8 text-center">
+      <div class="reveal eyebrow">Depoimentos reais</div>
+      <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+        O que dizem nossos clientes <span class="text-gradient">satisfeitos</span>
+      </h2>
+      <p class="reveal mt-6 text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto" style="transition-delay:.1s">
+        A satisfação dos nossos parceiros é o combustível para continuarmos entregando máxima previsibilidade de vendas diariamente.
+      </p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-8 mt-16 grid md:grid-cols-3 gap-6">
+      <div class="reveal surface surface-hover rounded-3xl p-8 flex flex-col" style="transition-delay:.05s">
+        <div class="flex items-center justify-between">
+          <span class="stars text-sm">★★★★★</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(148,163,184,0.15)"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H4.83c0-1.29 1.05-2.34 2.34-2.34V6Zm10 0A5.17 5.17 0 0 0 12 11.17V18h6.83v-6.83h-4.17c0-1.29 1.05-2.34 2.34-2.34V6Z"/></svg>
+        </div>
+        <p class="mt-5 text-slate-300 leading-relaxed flex-1">"A ProConnect mudou o rumo da nossa empresa. Estávamos cansados de agências tradicionais que prometiam mundos e fundos, mas não traziam nenhum contato concreto. Em poucos dias, nosso WhatsApp simplesmente não parava de receber novos orçamentos!"</p>
+        <div class="mt-6 pt-6 border-t border-white/5 flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand to-electric flex items-center justify-center font-display font-semibold text-sm text-ink-900">RL</div>
+          <div>
+            <p class="font-semibold text-sm">Roberto Lima</p>
+            <p class="text-xs text-slate-500">Estofados Premium · Higienização e Estofados</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-8 flex flex-col" style="transition-delay:.12s">
+        <div class="flex items-center justify-between">
+          <span class="stars text-sm">★★★★★</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(148,163,184,0.15)"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H4.83c0-1.29 1.05-2.34 2.34-2.34V6Zm10 0A5.17 5.17 0 0 0 12 11.17V18h6.83v-6.83h-4.17c0-1.29 1.05-2.34 2.34-2.34V6Z"/></svg>
+        </div>
+        <p class="mt-5 text-slate-300 leading-relaxed flex-1">"Trabalho excelente e de alto nível técnico! Fomos do zero absoluto para mais de 200 novos agendamentos mensais através do Meta Ads configurado pela ProConnect. O investimento se paga logo na primeira semana. Recomendo de olhos fechados!"</p>
+        <div class="mt-6 pt-6 border-t border-white/5 flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand to-electric flex items-center justify-center font-display font-semibold text-sm text-ink-900">TS</div>
+          <div>
+            <p class="font-semibold text-sm">Thiago Silva</p>
+            <p class="text-xs text-slate-500">Barbearia Estilo · Estética Masculina</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal surface surface-hover rounded-3xl p-8 flex flex-col" style="transition-delay:.19s">
+        <div class="flex items-center justify-between">
+          <span class="stars text-sm">★★★★★</span>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="rgba(148,163,184,0.15)"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H4.83c0-1.29 1.05-2.34 2.34-2.34V6Zm10 0A5.17 5.17 0 0 0 12 11.17V18h6.83v-6.83h-4.17c0-1.29 1.05-2.34 2.34-2.34V6Z"/></svg>
+        </div>
+        <p class="mt-5 text-slate-300 leading-relaxed flex-1">"O grande diferencial deles é a transparência máxima. Sei exatamente quanto gasto para trazer um cliente novo para minha loja e o cálculo de retorno é explícito no final do mês. Sem enrolação ou relatórios malucos. Equipe super prestativa e profissional."</p>
+        <div class="mt-6 pt-6 border-t border-white/5 flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand to-electric flex items-center justify-center font-display font-semibold text-sm text-ink-900">DS</div>
+          <div>
+            <p class="font-semibold text-sm">Daniele Santos</p>
+            <p class="text-xs text-slate-500">Santos Varejo e Decorações · Comércio Local</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOBRE / CEO ================= -->
+  <section id="sobre" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal relative max-w-sm mx-auto lg:mx-0">
+        <div class="absolute -inset-6 rounded-[2.5rem] bg-brand/10 blur-3xl"></div>
+        <img src="ceo.jpeg" alt="Fellipe de Sá, fundador da ProConnect Agency" loading="lazy" decoding="async" class="relative rounded-[2rem] w-full object-cover surface" style="box-shadow: 0 0 0 1px rgba(42,195,255,0.15), 0 40px 80px -32px rgba(0,0,0,0.9);" />
+      </div>
+
+      <div>
+        <div class="reveal eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M20.2 20.2c-1.5-2.9-4.6-4.9-8.2-4.9s-6.7 2-8.2 4.9"/></svg>
+          Direção estratégica experiente
+        </div>
+        <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+          Conheça quem vai cuidar do crescimento do seu negócio
+        </h2>
+        <p class="reveal mt-6 text-slate-400 leading-relaxed text-lg" style="transition-delay:.1s">
+          <strong class="text-slate-100">Fellipe de Sá</strong>, fundador da ProConnect Agency, é especialista em marketing, com 6 anos de experiência atuando em lançamentos digitais e no crescimento de negócios locais. Ao longo da sua trajetória, desenvolveu estratégias focadas em crescimento orgânico de redes sociais, ajudando empresas a ganharem posicionamento, autoridade e vendas de forma consistente.
+        </p>
+        <p class="reveal mt-4 text-slate-400 leading-relaxed text-lg" style="transition-delay:.14s">
+          Formado em Administração A Level pela AQA Londres, alia visão estratégica com execução prática no mercado.
+        </p>
+
+        <ul class="reveal mt-8 space-y-3" style="transition-delay:.18s">
+          <li class="checkline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mais de R$ 2 milhões gerenciados em anúncios.</li>
+          <li class="checkline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Mais de 50 empresas locais e digitais escaladas.</li>
+          <li class="checkline"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Metodologia própria focada em ROI e saúde de caixa.</li>
+        </ul>
+
+        <a href="#contato" class="reveal btn-primary mt-9" style="transition-delay:.24s">Agende a sua reunião
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-3xl mx-auto px-6 md:px-8 text-center">
+      <div class="reveal eyebrow">FAQ da ProConnect</div>
+      <h2 class="reveal font-display font-semibold text-3xl md:text-[2.75rem] leading-[1.15] tracking-tight mt-6" style="transition-delay:.05s">
+        Dúvidas comuns <span class="text-gradient">antes de começar</span>
+      </h2>
+      <p class="reveal mt-6 text-lg text-slate-400 leading-relaxed" style="transition-delay:.1s">
+        Esclarecemos as principais perguntas que empresários costumam fazer antes de fecharem a assessoria de tráfego pago com a nossa agência.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 md:px-8 mt-12 space-y-4">
+      <div class="reveal accordion-item" style="transition-delay:.05s">
+        <button class="accordion-trigger">
+          <span class="inline-flex items-center gap-3 font-semibold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7fe0ff" stroke-width="2.5" class="flex-shrink-0"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2.3 3.2M12 17h.01"/></svg>Quanto preciso investir por mês em anúncios?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="accordion-panel"><div class="accordion-panel-inner"><p>Recomendamos um investimento mínimo em mídia a partir de R$1.500/mês, além do valor do nosso serviço de gestão. Definimos o valor ideal juntos, na reunião de diagnóstico, com base no seu ticket médio, mercado e meta de faturamento — sem fórmulas genéricas.</p></div></div>
+      </div>
+
+      <div class="reveal accordion-item" style="transition-delay:.1s">
+        <button class="accordion-trigger">
+          <span class="inline-flex items-center gap-3 font-semibold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7fe0ff" stroke-width="2.5" class="flex-shrink-0"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2.3 3.2M12 17h.01"/></svg>Em quanto tempo vejo os primeiros resultados?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="accordion-panel"><div class="accordion-panel-inner"><p>Os primeiros leads e cliques qualificados costumam aparecer já nos primeiros 7 a 15 dias após a ativação das campanhas. Resultados consistentes e otimizados, com custo por lead reduzido, geralmente se estabilizam entre 30 e 45 dias.</p></div></div>
+      </div>
+
+      <div class="reveal accordion-item" style="transition-delay:.15s">
+        <button class="accordion-trigger">
+          <span class="inline-flex items-center gap-3 font-semibold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7fe0ff" stroke-width="2.5" class="flex-shrink-0"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2.3 3.2M12 17h.01"/></svg>Vocês trabalham com que tipos de negócio?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="accordion-panel"><div class="accordion-panel-inner"><p>Atendemos negócios locais e digitais de diversos segmentos: estética e barbearias, estofados e higienização, delivery e alimentação, comércio e varejo, serviços B2B e muito mais. Se o seu negócio depende de gerar clientes de forma recorrente, provavelmente podemos ajudar.</p></div></div>
+      </div>
+
+      <div class="reveal accordion-item" style="transition-delay:.2s">
+        <button class="accordion-trigger">
+          <span class="inline-flex items-center gap-3 font-semibold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7fe0ff" stroke-width="2.5" class="flex-shrink-0"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2.3 3.2M12 17h.01"/></svg>Como funciona o acompanhamento e relatórios?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="accordion-panel"><div class="accordion-panel-inner"><p>Você recebe relatórios claros e objetivos, com as métricas que realmente importam: custo por lead, cliques, conversões e retorno sobre o investimento (ROAS). Nada de planilhas confusas — só dados diretos para você tomar decisões.</p></div></div>
+      </div>
+
+      <div class="reveal accordion-item" style="transition-delay:.25s">
+        <button class="accordion-trigger">
+          <span class="inline-flex items-center gap-3 font-semibold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7fe0ff" stroke-width="2.5" class="flex-shrink-0"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2.3 3.2M12 17h.01"/></svg>Preciso ter experiência prévia com anúncios?</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="accordion-panel"><div class="accordion-panel-inner"><p>Não. A maioria dos nossos clientes nunca tinha rodado uma campanha profissional antes de fechar com a ProConnect. Cuidamos de toda a estratégia, criação e gestão — você só precisa focar em atender os novos clientes.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTATO / FORM ================= -->
+  <section id="contato" class="py-24 md:py-32">
+    <div class="max-w-4xl mx-auto px-6 md:px-8">
+      <div class="reveal surface rounded-[2.5rem] p-8 sm:p-12 md:p-16 relative overflow-hidden">
+        <div class="corner-glow" style="width:280px;height:280px;top:-80px;right:-80px;"></div>
+        <div class="corner-glow" style="width:220px;height:220px;bottom:-80px;left:-60px; background: radial-gradient(circle, rgba(74,93,245,0.18), transparent 70%);"></div>
+
+        <div class="relative text-center max-w-xl mx-auto">
+          <div class="eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5z"/></svg>
+            Último passo para a escala
+          </div>
+          <h2 class="font-display font-semibold text-3xl md:text-[2.5rem] leading-[1.15] tracking-tight mt-6">
+            Pronto para transformar <span class="text-gradient">anúncio em cliente?</span>
+          </h2>
+          <p class="mt-5 text-slate-400 leading-relaxed">
+            Preencha o formulário abaixo e receba um diagnóstico estratégico gratuito para o seu negócio — sem compromisso.
+          </p>
+        </div>
+
+        <form id="lead-form" class="relative mt-10 grid sm:grid-cols-2 gap-5" novalidate>
+          <div class="hidden" aria-hidden="true">
+            <label for="f-website">Deixe este campo em branco</label>
+            <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="sm:col-span-1">
+            <label class="field-label" for="f-name">Nome completo</label>
+            <input class="field-input" type="text" id="f-name" name="nome" placeholder="Seu nome" required />
+          </div>
+          <div class="sm:col-span-1">
+            <label class="field-label" for="f-phone">WhatsApp</label>
+            <input class="field-input" type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required />
+          </div>
+          <div class="sm:col-span-1">
+            <label class="field-label" for="f-email">E-mail</label>
+            <input class="field-input" type="email" id="f-email" name="email" placeholder="voce@empresa.com" required />
+          </div>
+          <div class="sm:col-span-1">
+            <label class="field-label" for="f-business">Nome do negócio</label>
+            <input class="field-input" type="text" id="f-business" name="negocio" placeholder="Nome da sua empresa" required />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="f-revenue">Faturamento mensal atual</label>
+            <select class="field-input" id="f-revenue" name="faturamento" required>
+              <option value="" disabled selected>Selecione uma faixa</option>
+              <option>Ainda não fatura</option>
+              <option>Até R$10.000</option>
+              <option>R$10.000 – R$50.000</option>
+              <option>R$50.000 – R$100.000</option>
+              <option>Acima de R$100.000</option>
+            </select>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="field-label" for="f-message">Conte um pouco sobre seu negócio <span class="normal-case font-normal text-slate-600">(opcional)</span></label>
+            <textarea class="field-input resize-none" id="f-message" name="mensagem" rows="4" placeholder="O que você vende, sua meta de crescimento, principais desafios..."></textarea>
+          </div>
+
+          <div class="sm:col-span-2 mt-2">
+            <button type="submit" id="lead-submit-btn" class="btn-primary w-full sm:w-auto justify-center">
+              <span class="btn-label">Quero minha reunião gratuita</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <p id="form-error" class="hidden mt-3 text-sm text-danger">Não foi possível enviar agora. Tente novamente ou fale com a gente pelo e-mail de contato.</p>
+          </div>
+        </form>
+
+        <div id="form-success" class="hidden relative mt-10 text-center py-10">
+          <div class="w-16 h-16 mx-auto rounded-full bg-success/10 border border-success/30 flex items-center justify-center text-success mb-5">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-2xl">Recebemos o seu pedido!</h3>
+          <p class="mt-3 text-slate-400 max-w-sm mx-auto">Nossa equipe vai analisar as informações e entrar em contato em até 5 minutos úteis para agendar sua reunião estratégica gratuita.</p>
+        </div>
+
+        <div class="relative mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-wide text-slate-500">
+          <span class="inline-flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2ee6a6" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Reunião 100% gratuita</span>
+          <span class="inline-flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2ee6a6" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Sem compromisso</span>
+          <span class="inline-flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2ee6a6" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Resposta em até 5min</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="relative z-10 border-t border-white/[0.06] pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10">
+      <div class="max-w-xs">
+        <a href="#inicio" class="flex items-center gap-2.5">
+          <img src="brand_assets/Ativo%2028@2x-Photoroom.png" alt="ProConnect" class="h-7 w-7 object-contain" />
+          <span class="font-display font-semibold text-lg">ProConnect</span>
+        </a>
+        <p class="mt-4 text-sm text-slate-500 leading-relaxed">Conectando negócios locais e digitais a resultados reais através de estratégias ultra-direcionadas em tráfego pago.</p>
+      </div>
+
+      <nav class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-400">
+        <a href="#inicio" class="hover:text-white transition-colors">Início</a>
+        <a href="#resultados" class="hover:text-white transition-colors">Resultados</a>
+        <a href="#como-funciona" class="hover:text-white transition-colors">Como Funciona</a>
+        <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="https://www.instagram.com/proconnectagency_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-brand hover:border-brand/40 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/proconnect-agency-139a2a399/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-brand hover:border-brand/40 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <button id="back-to-top" aria-label="Voltar ao topo" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-brand hover:border-brand/40 transition-transform duration-500 hover:-translate-y-1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+      <p>© 2026 ProConnect Agency. Todos os direitos reservados.</p>
+      <p>Feito com estratégia e dados reais.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const mobilePanel = document.getElementById('mobile-panel');
+  const header = document.getElementById('site-header');
+  function closeMobileNav() {
+    navToggle.classList.remove('is-open');
+    mobilePanel.classList.remove('is-open');
+    header.classList.remove('menu-open');
+    document.body.style.overflow = '';
+  }
+  navToggle.addEventListener('click', () => {
+    const opening = !mobilePanel.classList.contains('is-open');
+    navToggle.classList.toggle('is-open', opening);
+    mobilePanel.classList.toggle('is-open', opening);
+    header.classList.toggle('menu-open', opening);
+    document.body.style.overflow = opening ? 'hidden' : '';
+  });
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+  // Header background on scroll
+  function onScroll() {
+    header.classList.toggle('header-scrolled', window.scrollY > 24);
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Counters
+  function formatMoney(v) {
+    return 'R$ ' + Math.round(v).toLocaleString('pt-BR');
+  }
+  const counters = document.querySelectorAll('.counter');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        el.textContent = prefix + value.toLocaleString('pt-BR') + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = prefix + Math.round(target).toLocaleString('pt-BR') + suffix;
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(el => counterObserver.observe(el));
+
+  // Case study filter tabs
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const caseCards = document.querySelectorAll('.case-card');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const filter = btn.dataset.filter;
+      caseCards.forEach(card => {
+        const match = filter === 'todos' || card.dataset.segment === filter;
+        card.classList.toggle('is-hidden', !match);
+      });
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.accordion-item').forEach(item => {
+    const trigger = item.querySelector('.accordion-trigger');
+    trigger.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('is-open'));
+      if (!wasOpen) item.classList.add('is-open');
+    });
+  });
+
+  // Form submit — envia os leads para a planilha via Google Apps Script.
+  // Cole aqui a URL do "Web app" gerada no passo de deploy do Apps Script (termina em /exec).
+  const GOOGLE_SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxfeZR7sa6TTYPxcltov_MH0xDkZ4ovPwQyswZclvDGOQVZrQ1fnPMpRYSiL_lLtEWF/exec";
+
+  const leadForm = document.getElementById('lead-form');
+  const formSuccess = document.getElementById('form-success');
+  const formError = document.getElementById('form-error');
+  const submitBtn = document.getElementById('lead-submit-btn');
+  const submitBtnLabel = submitBtn.querySelector('.btn-label');
+
+  leadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!leadForm.checkValidity()) {
+      leadForm.reportValidity();
+      return;
+    }
+
+    // Honeypot: bots costumam preencher todos os campos, inclusive os escondidos.
+    // Se vier preenchido, finge sucesso sem realmente enviar nada para a planilha.
+    if (document.getElementById('f-website').value) {
+      leadForm.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+      return;
+    }
+
+    formError.classList.add('hidden');
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+    submitBtnLabel.textContent = 'Enviando...';
+
+    try {
+      const body = new URLSearchParams(new FormData(leadForm));
+      await fetch(GOOGLE_SHEETS_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors', // o Apps Script não retorna cabeçalhos CORS; enviamos "às cegas" e confiamos no sucesso se não houver erro de rede
+        body,
+      });
+      leadForm.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+    } catch (err) {
+      console.error('Falha ao enviar lead para a planilha:', err);
+      formError.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '';
+      submitBtnLabel.textContent = 'Quero minha reunião gratuita';
+    }
+  });
+
+  // Back to top
+  document.getElementById('back-to-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<script>
+  // Animated WebGL shader background, covering the whole page, recolored
+  // to the brand's cyan/electric-blue palette instead of an RGB split.
+  // Written in raw WebGL (no Three.js) — it's just a fullscreen quad plus a
+  // fragment shader, so pulling in a ~1.2MB 3D library for it was pure waste.
+  (function () {
+    const canvas = document.getElementById('site-shader');
+    if (!canvas) return;
+
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return;
+
+    try {
+      const vertexSrc = `
+        attribute vec3 position;
+        void main() {
+          gl_Position = vec4(position, 1.0);
+        }
+      `;
+
+      const fragmentSrc = `
+        precision highp float;
+        uniform vec2 resolution;
+        uniform float time;
+        uniform float xScale;
+        uniform float yScale;
+        uniform float distortion;
+
+        vec3 brandColor(float t) {
+          vec3 deep = vec3(0.008, 0.014, 0.035);
+          vec3 mid = vec3(0.09, 0.36, 0.86);
+          vec3 bright = vec3(0.55, 0.9, 1.0);
+          vec3 col = mix(deep, mid, smoothstep(0.0, 0.6, t));
+          col = mix(col, bright, smoothstep(0.6, 1.1, t));
+          return col;
+        }
+
+        void main() {
+          vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+          float d = length(p) * distortion;
+
+          float wave1 = sin((p.x * (1.0 + d) + time) * xScale) * yScale;
+          float wave2 = sin((p.x * 1.6 - time * 0.6) * xScale) * (yScale * 0.6);
+
+          float line1 = 0.05 / abs(p.y + wave1);
+          float line2 = 0.032 / abs(p.y * 1.4 + wave2 + 0.22);
+
+          float intensity = line1 + line2 * 0.7;
+          intensity = clamp(intensity, 0.0, 1.3);
+
+          vec3 color = brandColor(intensity);
+          float vignette = smoothstep(1.5, 0.1, length(p));
+          color *= mix(0.55, 1.0, vignette);
+
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          throw new Error(gl.getShaderInfoLog(shader));
+        }
+        return shader;
+      }
+
+      const program = gl.createProgram();
+      gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexSrc));
+      gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSrc));
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error(gl.getProgramInfoLog(program));
+      }
+      gl.useProgram(program);
+
+      const quad = new Float32Array([-1, -1, 0, 1, -1, 0, -1, 1, 0, 1, -1, 0, -1, 1, 0, 1, 1, 0]);
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW);
+
+      const positionLoc = gl.getAttribLocation(program, 'position');
+      gl.enableVertexAttribArray(positionLoc);
+      gl.vertexAttribPointer(positionLoc, 3, gl.FLOAT, false, 0, 0);
+
+      const uniforms = {
+        resolution: gl.getUniformLocation(program, 'resolution'),
+        time: gl.getUniformLocation(program, 'time'),
+        xScale: gl.getUniformLocation(program, 'xScale'),
+        yScale: gl.getUniformLocation(program, 'yScale'),
+        distortion: gl.getUniformLocation(program, 'distortion'),
+      };
+      gl.uniform1f(uniforms.xScale, 1.6);
+      gl.uniform1f(uniforms.yScale, 0.42);
+      gl.uniform1f(uniforms.distortion, 0.06);
+      gl.clearColor(4 / 255, 6 / 255, 12 / 255, 1);
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      function resize() {
+        const w = Math.round(window.innerWidth * dpr);
+        const h = Math.round(window.innerHeight * dpr);
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w;
+          canvas.height = h;
+        }
+        gl.viewport(0, 0, w, h);
+        gl.uniform2f(uniforms.resolution, w, h);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      let time = 0;
+      let animationId = null;
+      function animate() {
+        time += 0.008;
+        gl.uniform1f(uniforms.time, time);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        animationId = requestAnimationFrame(animate);
+      }
+      animate();
+
+      window.addEventListener('beforeunload', () => {
+        if (animationId) cancelAnimationFrame(animationId);
+        window.removeEventListener('resize', resize);
+      });
+    } catch (err) {
+      console.warn('Shader de fundo indisponível, mantendo fundo padrão.', err);
+    }
+  })();
+</script>
+
+</body>
+</html>
