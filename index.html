@@ -366,6 +366,142 @@
   <div class="bg-noise"></div>
 </div>
 
+<script>
+  // Animated WebGL shader background, covering the whole page, recolored
+  // to the brand's cyan/electric-blue palette instead of an RGB split.
+  // Written in raw WebGL (no Three.js) — it's just a fullscreen quad plus a
+  // fragment shader, so pulling in a ~1.2MB 3D library for it was pure waste.
+  // Placed right here (instead of at the end of body) so it starts painting
+  // immediately instead of waiting on every other script on the page.
+  (function () {
+    const canvas = document.getElementById('site-shader');
+    if (!canvas) return;
+
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return;
+
+    try {
+      const vertexSrc = `
+        attribute vec3 position;
+        void main() {
+          gl_Position = vec4(position, 1.0);
+        }
+      `;
+
+      const fragmentSrc = `
+        precision highp float;
+        uniform vec2 resolution;
+        uniform float time;
+        uniform float xScale;
+        uniform float yScale;
+        uniform float distortion;
+
+        vec3 brandColor(float t) {
+          vec3 deep = vec3(0.008, 0.014, 0.035);
+          vec3 mid = vec3(0.09, 0.36, 0.86);
+          vec3 bright = vec3(0.55, 0.9, 1.0);
+          vec3 col = mix(deep, mid, smoothstep(0.0, 0.6, t));
+          col = mix(col, bright, smoothstep(0.6, 1.1, t));
+          return col;
+        }
+
+        void main() {
+          vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+          float d = length(p) * distortion;
+
+          float wave1 = sin((p.x * (1.0 + d) + time) * xScale) * yScale;
+          float wave2 = sin((p.x * 1.6 - time * 0.6) * xScale) * (yScale * 0.6);
+
+          float line1 = 0.05 / abs(p.y + wave1);
+          float line2 = 0.032 / abs(p.y * 1.4 + wave2 + 0.22);
+
+          float intensity = line1 + line2 * 0.7;
+          intensity = clamp(intensity, 0.0, 1.3);
+
+          vec3 color = brandColor(intensity);
+          float vignette = smoothstep(1.5, 0.1, length(p));
+          color *= mix(0.55, 1.0, vignette);
+
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          throw new Error(gl.getShaderInfoLog(shader));
+        }
+        return shader;
+      }
+
+      const program = gl.createProgram();
+      gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexSrc));
+      gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSrc));
+      gl.linkProgram(program);
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        throw new Error(gl.getProgramInfoLog(program));
+      }
+      gl.useProgram(program);
+
+      const quad = new Float32Array([-1, -1, 0, 1, -1, 0, -1, 1, 0, 1, -1, 0, -1, 1, 0, 1, 1, 0]);
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW);
+
+      const positionLoc = gl.getAttribLocation(program, 'position');
+      gl.enableVertexAttribArray(positionLoc);
+      gl.vertexAttribPointer(positionLoc, 3, gl.FLOAT, false, 0, 0);
+
+      const uniforms = {
+        resolution: gl.getUniformLocation(program, 'resolution'),
+        time: gl.getUniformLocation(program, 'time'),
+        xScale: gl.getUniformLocation(program, 'xScale'),
+        yScale: gl.getUniformLocation(program, 'yScale'),
+        distortion: gl.getUniformLocation(program, 'distortion'),
+      };
+      gl.uniform1f(uniforms.xScale, 1.6);
+      gl.uniform1f(uniforms.yScale, 0.42);
+      gl.uniform1f(uniforms.distortion, 0.06);
+      gl.clearColor(4 / 255, 6 / 255, 12 / 255, 1);
+
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      function resize() {
+        const w = Math.round(window.innerWidth * dpr);
+        const h = Math.round(window.innerHeight * dpr);
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w;
+          canvas.height = h;
+        }
+        gl.viewport(0, 0, w, h);
+        gl.uniform2f(uniforms.resolution, w, h);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      let time = 0;
+      let animationId = null;
+      function animate() {
+        time += 0.008;
+        gl.uniform1f(uniforms.time, time);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        animationId = requestAnimationFrame(animate);
+      }
+      animate();
+
+      window.addEventListener('beforeunload', () => {
+        if (animationId) cancelAnimationFrame(animationId);
+        window.removeEventListener('resize', resize);
+      });
+    } catch (err) {
+      console.warn('Shader de fundo indisponível, mantendo fundo padrão.', err);
+    }
+  })();
+</script>
+
 <!-- ================= NAV ================= -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-500">
   <nav class="max-w-7xl mx-auto px-6 md:px-8">
@@ -840,7 +976,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
       <div class="reveal relative max-w-sm mx-auto lg:mx-0">
         <div class="absolute -inset-6 rounded-[2.5rem] bg-brand/10 blur-3xl"></div>
-        <img src="ceo.jpeg" alt="Fellipe de Sá, fundador da ProConnect Agency" loading="lazy" decoding="async" class="relative rounded-[2rem] w-full object-cover surface" style="box-shadow: 0 0 0 1px rgba(42,195,255,0.15), 0 40px 80px -32px rgba(0,0,0,0.9);" />
+        <img src="ceo.webp" alt="Fellipe de Sá, fundador da ProConnect Agency" loading="lazy" decoding="async" class="relative rounded-[2rem] w-full object-cover surface" style="box-shadow: 0 0 0 1px rgba(42,195,255,0.15), 0 40px 80px -32px rgba(0,0,0,0.9);" />
       </div>
 
       <div>
@@ -1194,140 +1330,6 @@
   document.getElementById('back-to-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-</script>
-
-<script>
-  // Animated WebGL shader background, covering the whole page, recolored
-  // to the brand's cyan/electric-blue palette instead of an RGB split.
-  // Written in raw WebGL (no Three.js) — it's just a fullscreen quad plus a
-  // fragment shader, so pulling in a ~1.2MB 3D library for it was pure waste.
-  (function () {
-    const canvas = document.getElementById('site-shader');
-    if (!canvas) return;
-
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) return;
-
-    try {
-      const vertexSrc = `
-        attribute vec3 position;
-        void main() {
-          gl_Position = vec4(position, 1.0);
-        }
-      `;
-
-      const fragmentSrc = `
-        precision highp float;
-        uniform vec2 resolution;
-        uniform float time;
-        uniform float xScale;
-        uniform float yScale;
-        uniform float distortion;
-
-        vec3 brandColor(float t) {
-          vec3 deep = vec3(0.008, 0.014, 0.035);
-          vec3 mid = vec3(0.09, 0.36, 0.86);
-          vec3 bright = vec3(0.55, 0.9, 1.0);
-          vec3 col = mix(deep, mid, smoothstep(0.0, 0.6, t));
-          col = mix(col, bright, smoothstep(0.6, 1.1, t));
-          return col;
-        }
-
-        void main() {
-          vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
-          float d = length(p) * distortion;
-
-          float wave1 = sin((p.x * (1.0 + d) + time) * xScale) * yScale;
-          float wave2 = sin((p.x * 1.6 - time * 0.6) * xScale) * (yScale * 0.6);
-
-          float line1 = 0.05 / abs(p.y + wave1);
-          float line2 = 0.032 / abs(p.y * 1.4 + wave2 + 0.22);
-
-          float intensity = line1 + line2 * 0.7;
-          intensity = clamp(intensity, 0.0, 1.3);
-
-          vec3 color = brandColor(intensity);
-          float vignette = smoothstep(1.5, 0.1, length(p));
-          color *= mix(0.55, 1.0, vignette);
-
-          gl_FragColor = vec4(color, 1.0);
-        }
-      `;
-
-      function compileShader(type, source) {
-        const shader = gl.createShader(type);
-        gl.shaderSource(shader, source);
-        gl.compileShader(shader);
-        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-          throw new Error(gl.getShaderInfoLog(shader));
-        }
-        return shader;
-      }
-
-      const program = gl.createProgram();
-      gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexSrc));
-      gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSrc));
-      gl.linkProgram(program);
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        throw new Error(gl.getProgramInfoLog(program));
-      }
-      gl.useProgram(program);
-
-      const quad = new Float32Array([-1, -1, 0, 1, -1, 0, -1, 1, 0, 1, -1, 0, -1, 1, 0, 1, 1, 0]);
-      const buffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-      gl.bufferData(gl.ARRAY_BUFFER, quad, gl.STATIC_DRAW);
-
-      const positionLoc = gl.getAttribLocation(program, 'position');
-      gl.enableVertexAttribArray(positionLoc);
-      gl.vertexAttribPointer(positionLoc, 3, gl.FLOAT, false, 0, 0);
-
-      const uniforms = {
-        resolution: gl.getUniformLocation(program, 'resolution'),
-        time: gl.getUniformLocation(program, 'time'),
-        xScale: gl.getUniformLocation(program, 'xScale'),
-        yScale: gl.getUniformLocation(program, 'yScale'),
-        distortion: gl.getUniformLocation(program, 'distortion'),
-      };
-      gl.uniform1f(uniforms.xScale, 1.6);
-      gl.uniform1f(uniforms.yScale, 0.42);
-      gl.uniform1f(uniforms.distortion, 0.06);
-      gl.clearColor(4 / 255, 6 / 255, 12 / 255, 1);
-
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      function resize() {
-        const w = Math.round(window.innerWidth * dpr);
-        const h = Math.round(window.innerHeight * dpr);
-        if (canvas.width !== w || canvas.height !== h) {
-          canvas.width = w;
-          canvas.height = h;
-        }
-        gl.viewport(0, 0, w, h);
-        gl.uniform2f(uniforms.resolution, w, h);
-      }
-
-      window.addEventListener('resize', resize);
-      resize();
-
-      let time = 0;
-      let animationId = null;
-      function animate() {
-        time += 0.008;
-        gl.uniform1f(uniforms.time, time);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
-        animationId = requestAnimationFrame(animate);
-      }
-      animate();
-
-      window.addEventListener('beforeunload', () => {
-        if (animationId) cancelAnimationFrame(animationId);
-        window.removeEventListener('resize', resize);
-      });
-    } catch (err) {
-      console.warn('Shader de fundo indisponível, mantendo fundo padrão.', err);
-    }
-  })();
 </script>
 
 </body>
