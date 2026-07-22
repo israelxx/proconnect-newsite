@@ -21,46 +21,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://www.googletagmanager.com" />
 <link rel="preconnect" href="https://connect.facebook.net" />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink: {
-            950: '#020409',
-            900: '#04060c',
-            850: '#060911',
-            800: '#080c16',
-            700: '#0b101d',
-            600: '#111827',
-            500: '#1b2233',
-          },
-          brand: {
-            DEFAULT: '#2ac3ff',
-            soft: '#7fe0ff',
-            dim: '#1694c9',
-          },
-          electric: {
-            DEFAULT: '#4a5df5',
-            deep: '#1230a8',
-          },
-          success: '#2ee6a6',
-          danger: '#ff5c72',
-        },
-        fontFamily: {
-          display: ['"Unbounded"', 'sans-serif'],
-          sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          mono: ['"JetBrains Mono"', 'monospace'],
-        },
-        boxShadow: {
-          glow: '0 0 0 1px rgba(42,195,255,0.15), 0 8px 32px -8px rgba(42,195,255,0.35), 0 24px 64px -24px rgba(0,0,0,0.7)',
-          card: '0 1px 0 rgba(255,255,255,0.03) inset, 0 24px 48px -32px rgba(0,0,0,0.8)',
-        },
-      },
-    },
-  };
-</script>
+<!-- CSS do Tailwind pré-compilado em build (ver package.json → build:css), em vez do
+     compilador JIT via CDN: mesmas classes, sem custo de compilação no navegador do
+     visitante. Depois de editar classes no HTML, rode `npm run build:css` para atualizar
+     dist/tailwind.min.css. tailwind.config.js contém a configuração de tema (cores,
+     fontes, sombras) que antes vivia inline aqui. -->
+<link rel="stylesheet" href="dist/tailwind.min.css" />
 
 <style>
   :root {
@@ -592,6 +558,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         animationId = requestAnimationFrame(animate);
       }
       animate();
+
+      // Pausa o loop quando a aba vai para segundo plano — evita gastar CPU/bateria
+      // do celular renderizando um fundo que ninguém está vendo.
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (animationId) cancelAnimationFrame(animationId);
+          animationId = null;
+        } else if (!animationId) {
+          animate();
+        }
+      });
 
       window.addEventListener('beforeunload', () => {
         if (animationId) cancelAnimationFrame(animationId);
